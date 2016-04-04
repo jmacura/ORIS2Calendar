@@ -1,0 +1,57 @@
+<!doctype html>
+<html dir="ltr" lang="cs">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="jmacura 2016">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>ORIS2Calendar</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="all">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="FileSaver.min.js"></script>
+	<script src="oris2cal.js" charset="utf-8"></script>
+</head>
+
+<body lang="cs">
+<main>
+
+<div id="content">
+	<h1>ORIS2Calendar</h1>
+	<p>Valid to ORIS v2.9.1</p>
+	Vyberte oblast:
+	<select>
+		<option onclick="setRegion('Č');">Čechy</option>
+		<option onclick="setRegion('ČR');">ČR</option>
+		<option onclick="setRegion('HA');">Hanácká</option>
+		<option onclick="setRegion('JČ');">Jihočeská</option>
+		<option onclick="setRegion('JE');">Ještědská</option>
+		<option onclick="setRegion('JM');">Jihomoravská</option>
+		<option onclick="setRegion('M');">Morava</option>
+		<option onclick="setRegion('MSK');">Moravskoslezská</option>
+		<option onclick="setRegion('P');">Pražská</option>
+		<option onclick="setRegion('StČ');">Středočeská</option>
+		<option onclick="setRegion('VA');">Valašská</option>
+		<option onclick="setRegion('VČ');">Východočeská</option>
+		<option onclick="setRegion('VY');">Vysočina</option>
+		<option onclick="setRegion('ZČ');">Západočeská</option>
+	</select>&emsp;
+	<button onclick="retrieveData();">Získat data z ORISu</button>&emsp;
+	<button onclick="saveData();">Uložit data do CSV</button>
+	<div id="info-block"><p>&nbsp;<p></div>
+	<p>&nbsp;</p>
+	<footer>
+		<div class="logo">
+			<img src="logo_web.svg" alt="author's logo">
+		</div>
+		<div class="credits">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>
+			This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+			<p>Author: Jan Macura, 2016</p>
+			<p>University of West Bohemia, Faculty of Applied Sciences</p>
+		</div>
+	</footer>
+</div>
+
+</main>
+</body>
+</html>
