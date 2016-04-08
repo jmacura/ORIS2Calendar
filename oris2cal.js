@@ -1,9 +1,10 @@
 // JavaScript Document
 // @author: jmacura 2016
+// @version 1.0
 
 // global variables
 var dataBlob = null;
-var region = "ÄŒ";
+var region = "È";
 
 // setter for global variable
 function setRegion(rg) {
@@ -13,34 +14,46 @@ function setRegion(rg) {
 // **** Fction for sending info to user ****
 function setInfo(text) {
 	var infoBlock = document.getElementById("info-block");
-	var ls, t;
-	ls = document.createElement("P");
-	t = document.createTextNode(text);
-	ls.appendChild(t);
+	var t = document.createTextNode(text);
 	while(infoBlock.hasChildNodes()) {
 		infoBlock.removeChild(infoBlock.firstChild);
 	}
-	infoBlock.appendChild(ls);
+	infoBlock.appendChild(t);
+}
+
+// **** Auxillary fction for GUI ****
+function showSaver() {
+	var sav = document.getElementById("saver");
+	sav.style.visibility = "visible";
 }
 
 // **** This is just data retrieval fction ****
 function retrieveData() {
-	setInfo('ProbÃ­hÃ¡...');
+	setInfo("Probíhá...");
 	var url = "http://oris.orientacnisporty.cz/API/";
 	var queryUrl = url+"?format=json&method=getEventList&sport=1&rg="+encodeURIComponent(region)+"&callback=?";
 	console.log(queryUrl);
 	$.ajax({
 		dataType: "json",
 		url: queryUrl,
+		error: function (jqXHR, textStatus, errorThrown) {
+			setInfo("Nastala chyba: " + textStatus);
+			console.log(errorThrown);
+		},
 		success: function(_data) {
 			console.log(_data);
 			var results = convertToCSV(_data.Data);
 			if (window.Blob) {
 				dataBlob = new Blob([results], {type: "text/csv;charset=utf-8"});
 			}
-			else console.log("Yo browsa no suporr blub");
-			setInfo('Hotovo');
-		}
+			else {
+				setInfo("Problém pøi ukládání");
+				console.log("Yo browsa no suporr blub");
+			}
+			setInfo("Hotovo");
+			showSaver();
+		},
+		timeout: 10000
 	});
 	//console.log("done"); --async => is not relevant
 }
