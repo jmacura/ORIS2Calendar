@@ -4,11 +4,16 @@
 
 // global variables
 var dataBlob = null;
-var region = "È";
+var region = 'È';
+var year = '2017';
 
 // setter for global variable
 function setRegion(rg) {
 	region = rg;
+}
+
+function setYear(y) {
+	year = y;
 }
 
 // **** Fction for sending info to user ****
@@ -24,20 +29,22 @@ function setInfo(text) {
 // **** Auxillary fction for GUI ****
 function showSaver() {
 	var sav = document.getElementById("saver");
-	sav.style.visibility = "visible";
+	sav.style.visibility = 'visible';
 }
 
 // **** This is just data retrieval fction ****
 function retrieveData() {
-	setInfo("Probíhá...");
-	var url = "http://oris.orientacnisporty.cz/API/";
-	var queryUrl = url+"?format=json&method=getEventList&sport=1&rg="+encodeURIComponent(region)+"&callback=?";
+	setInfo('Probíhá...');
+	var datefrom = encodeURIComponent(year + '-01-01');
+	var dateto = encodeURIComponent(year + '-12-31');
+	var url = 'http://oris.orientacnisporty.cz/API/';
+	var queryUrl = url+'?format=json&method=getEventList&sport=1&rg='+encodeURIComponent(region)+'&datefrom='+datefrom+'&dateto='+dateto+'&callback=?';
 	console.log(queryUrl);
 	$.ajax({
 		dataType: "json",
 		url: queryUrl,
 		error: function (jqXHR, textStatus, errorThrown) {
-			setInfo("Nastala chyba: " + textStatus);
+			setInfo('Nastala chyba: ' + textStatus);
 			console.log(errorThrown);
 		},
 		success: function(_data) {
@@ -47,10 +54,10 @@ function retrieveData() {
 				dataBlob = new Blob([results], {type: "text/csv;charset=utf-8"});
 			}
 			else {
-				setInfo("Problém pøi ukládání");
+				setInfo('Problém pøi ukládání');
 				console.log("Yo browsa no suporr blub");
 			}
-			setInfo("Hotovo");
+			setInfo('Hotovo');
 			showSaver();
 		},
 		timeout: 10000

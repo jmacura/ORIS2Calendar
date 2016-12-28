@@ -36,12 +36,18 @@
 		<option onclick="setRegion('VY');">Vysoèina</option>
 		<option onclick="setRegion('ZÈ');">Západoèeská</option>
 	</select>&emsp;
+	<strong>Vyberte rok:</strong>
+	<select>
+		<option onClick="setYear('2016');">2016</option>
+		<option onClick="setYear('2017');" selected>2017</option>
+		<option onClick="setYear('2018');">2018</option>
+	</select>&emsp;
 	<button onclick="retrieveData();">Naèíst data z ORISu</button>&emsp;
 	<span id="info-block">&nbsp;</span>&emsp;
 	<button onclick="saveData();" id="saver">Ulo¾it data do CSV</button>
 	<h2>Návod k pou¾ití</h2>
 	<ol>
-		<li>Vyberte oblast (oblasti pøesnì odpovídají ORISu)</li>
+		<li>Vyberte oblast (oblasti pøesnì odpovídají ORISu) a rok</li>
 		<li>Naètìte data z ORISu</li>
 		<li>Ulo¾te na svùj disk soubor <code>zavody.csv</code></li>
 		<li>V Google kalendáøi pøejdìte do <em>nastavení</em></li>
