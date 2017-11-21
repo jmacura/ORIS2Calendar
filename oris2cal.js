@@ -4,7 +4,8 @@
 
 // global variables
 var dataBlob = null;
-var region = 'È';
+var region = 'ÄŒ';
+var sportID = 1;
 var year = '2017';
 
 // setter for global variable
@@ -12,9 +13,35 @@ function setRegion(rg) {
 	region = rg;
 }
 
+function setSport(s) {
+	sportID = s;
+}
+
 function setYear(y) {
 	year = y;
 }
+
+// **** Setting default inputs after document loads ****
+$(document).ready(
+	function() {
+		var thisYear = new Date().getFullYear();
+		var y = document.getElementById("years");
+		op1 = document.createElement("OPTION");
+		op1.appendChild(document.createTextNode((thisYear-1)+''));
+		$(op1).on("click", function(){setYear((thisYear-1))});
+		op2 = document.createElement("OPTION");
+		op2.appendChild(document.createTextNode((thisYear)+''));
+		$(op2).on("click", function(){setYear((thisYear)+'')});
+		$(op2).attr("selected",'');
+		op3 = document.createElement("OPTION");
+		op3.appendChild(document.createTextNode((thisYear+1)+''));
+		$(op3).on("click", function(){setYear((thisYear+1)+'')});
+		y.appendChild(op1);
+		y.appendChild(op2);
+		y.appendChild(op3);
+		//console.log(y.children)
+	}
+);
 
 // **** Fction for sending info to user ****
 function setInfo(text) {
@@ -34,11 +61,16 @@ function showSaver() {
 
 // **** This is just data retrieval fction ****
 function retrieveData() {
-	setInfo('Probíhá...');
+	setInfo('ProbÃ­hÃ¡...');
 	var datefrom = encodeURIComponent(year + '-01-01');
 	var dateto = encodeURIComponent(year + '-12-31');
 	var url = 'http://oris.orientacnisporty.cz/API/';
-	var queryUrl = url+'?format=json&method=getEventList&sport=1&rg='+encodeURIComponent(region)+'&datefrom='+datefrom+'&dateto='+dateto+'&callback=?';
+	var queryUrl = url+'?format=json&method=getEventList' +
+		'&sport=' + sportID +
+		'&rg=' + encodeURIComponent(region) +
+		'&datefrom=' + datefrom +
+		'&dateto=' + dateto +
+		'&callback=?';
 	console.log(queryUrl);
 	$.ajax({
 		dataType: "json",
@@ -48,13 +80,13 @@ function retrieveData() {
 			console.log(errorThrown);
 		},
 		success: function(_data) {
-			console.log(_data);
+			//console.log(_data);
 			var results = convertToCSV(_data.Data);
 			if (window.Blob) {
 				dataBlob = new Blob([results], {type: "text/csv;charset=utf-8"});
 			}
 			else {
-				setInfo('Problém pøi ukládání');
+				setInfo('ProblÃ©m pÅ™i uklÃ¡dÃ¡nÃ­');
 				console.log("Yo browsa no suporr blub");
 			}
 			setInfo('Hotovo');
