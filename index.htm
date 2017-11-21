@@ -1,7 +1,7 @@
 <!doctype html>
 <html dir="ltr" lang="cs">
 <head>
-	<meta charset="utf-8">
+	<meta charset="iso-8859-2">
 	<meta name="author" content="jmacura 2016-2017">
 	<meta name="robots" content="index, follow">
 	<title>ORIS2Calendar</title>
@@ -16,47 +16,47 @@
 
 <div id="content">
 	<h1>ORIS2Calendar</h1>
-	<p>ValidnÃ­ pro ORIS verze 3.4.1</p>
+	<p>Validní pro ORIS verze 3.4.1</p>
 	<br>
 	<strong>Vyberte sport:</strong>
 	<select>
-		<option onClick="setSport('1');" selected>pÄ›Å¡Ã­ OB</option>
+		<option onClick="setSport('1');" selected>pì¹í OB</option>
 		<option onClick="setSport('2');">LOB</option>
 		<option onClick="setSport('3');">MTBO</option>
 	</select>&emsp;
 	<strong>Vyberte oblast:</strong>
 	<select>
-		<option onclick="setRegion('ÄŒ');">ÄŒechy</option>
-		<option onclick="setRegion('ÄŒR');">ÄŒR</option>
-		<option onclick="setRegion('HA');">HanÃ¡ckÃ¡</option>
-		<option onclick="setRegion('JÄŒ');">JihoÄeskÃ¡</option>
-		<option onclick="setRegion('JE');">JeÅ¡tÄ›dskÃ¡</option>
-		<option onclick="setRegion('JM');">JihomoravskÃ¡</option>
+		<option onclick="setRegion('È');">Èechy</option>
+		<option onclick="setRegion('ÈR');">ÈR</option>
+		<option onclick="setRegion('HA');">Hanácká</option>
+		<option onclick="setRegion('JÈ');">Jihoèeská</option>
+		<option onclick="setRegion('JE');">Je¹tìdská</option>
+		<option onclick="setRegion('JM');">Jihomoravská</option>
 		<option onclick="setRegion('M');">Morava</option>
-		<option onclick="setRegion('MSK');">MoravskoslezskÃ¡</option>
-		<option onclick="setRegion('P');">PraÅ¾skÃ¡</option>
-		<option onclick="setRegion('StÄŒ');">StÅ™edoÄeskÃ¡</option>
-		<option onclick="setRegion('VA');">ValaÅ¡skÃ¡</option>
-		<option onclick="setRegion('VÄŒ');">VÃ½chodoÄeskÃ¡</option>
-		<option onclick="setRegion('VY');">VysoÄina</option>
-		<option onclick="setRegion('ZÄŒ');">ZÃ¡padoÄeskÃ¡</option>
+		<option onclick="setRegion('MSK');">Moravskoslezská</option>
+		<option onclick="setRegion('P');">Pra¾ská</option>
+		<option onclick="setRegion('StÈ');">Støedoèeská</option>
+		<option onclick="setRegion('VA');">Vala¹ská</option>
+		<option onclick="setRegion('VÈ');">Vıchodoèeská</option>
+		<option onclick="setRegion('VY');">Vysoèina</option>
+		<option onclick="setRegion('ZÈ');">Západoèeská</option>
 	</select>&emsp;
 	<strong>Vyberte rok:</strong>
 	<select id="years">
 	</select>&emsp;
-	<button onclick="retrieveData();">NaÄÃ­st data z ORISu</button>&emsp;
+	<button onclick="retrieveData();">Naèíst data z ORISu</button>&emsp;
 	<span id="info-block">&nbsp;</span>&emsp;
-	<button onclick="saveData();" id="saver">UloÅ¾it data do CSV</button>
-	<h2>NÃ¡vod k pouÅ¾itÃ­</h2>
+	<button onclick="saveData();" id="saver">Ulo¾it data do CSV</button>
+	<h2>Návod k pou¾ití</h2>
 	<ol>
-		<li>Vyberte sport (pÄ›Å¡Ã­ OB, LOB nebo MTBO) oblast (oblasti pÅ™esnÄ› odpovÃ­dajÃ­ ORISu) a rok</li>
-		<li>NaÄtÄ›te data z ORISu</li>
-		<li>UloÅ¾te na svÅ¯j disk soubor <code>zavody.csv</code></li>
-		<li>V Google kalendÃ¡Å™i pÅ™ejdÄ›te do <em>nastavenÃ­</em></li>
-		<li>PÅ™ejdÄ›te na kartu <em>KalendÃ¡Å™e</em></li>
-		<li>(Chcete-li zÃ¡vody nahrÃ¡t do zvlÃ¡Å¡tnÃ­ho kalendÃ¡Å™e, vytvoÅ™te jej pomocÃ­ <em>VytvoÅ™it novÃ½ kalendÃ¡Å™</em>)</li>
-		<li>Vyberte <em>Importovat kalendÃ¡Å™e</em> a v dialogovÃ©m oknÄ› vyberte soubor <code>zavody.csv</code> a kalenÃ¡Å™, do nÄ›jÅ¾ se majÃ­ zÃ¡vody nahrÃ¡t</li>
-		<li>Klik na <em>Import</em>... a je to (nebo <a href="https://github.com/jmacura/ORIS2Calendar/issues" target="_blank">mi napiÅ¡te</a>, Å¾e to je <a href="http://www.hovnokod.cz/">na hovno</a>)</li>
+		<li>Vyberte sport (pì¹í OB, LOB nebo MTBO) oblast (oblasti pøesnì odpovídají ORISu) a rok</li>
+		<li>Naètìte data z ORISu</li>
+		<li>Ulo¾te na svùj disk soubor <code>zavody.csv</code></li>
+		<li>V Google kalendáøi pøejdìte do <em>nastavení</em></li>
+		<li>Pøejdìte na kartu <em>Kalendáøe</em></li>
+		<li>(Chcete-li závody nahrát do zvlá¹tního kalendáøe, vytvoøte jej pomocí <em>Vytvoøit novı kalendáø</em>)</li>
+		<li>Vyberte <em>Importovat kalendáøe</em> a v dialogovém oknì vyberte soubor <code>zavody.csv</code> a kalenáø, do nìj¾ se mají závody nahrát</li>
+		<li>Klik na <em>Import</em>... a je to (nebo <a href="https://github.com/jmacura/ORIS2Calendar/issues" target="_blank">mi napi¹te</a>, ¾e to je <a href="http://www.hovnokod.cz/">na hovno</a>)</li>
 	</ol>
 
 	<footer>
@@ -64,7 +64,7 @@
 			<img src="logo_web.svg" alt="autorovo logo; &copy;">
 		</div>
 		<div class="credits">
-			<a href="https://github.com/jmacura/ORIS2Calendar">ZdrojovÃ½ kÃ³d</a> tohoto dÃ­la podlÃ©hÃ¡ licenci <a rel="license" href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License verze 2.0</a>.
+			<a href="https://github.com/jmacura/ORIS2Calendar">Zdrojovı kód</a> tohoto díla podléhá licenci <a rel="license" href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License verze 2.0</a>.
 			<p>Autor: Jan Macura, 2016&ndash;2017</p>
 		</div>
 	</footer>
