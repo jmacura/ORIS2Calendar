@@ -6,7 +6,7 @@
 var dataBlob = null;
 var region = 'Č';
 var sportID = 1;
-var year = '2017';
+var year = '2018';
 
 // setter for global variable
 function setRegion(rg) {
@@ -25,6 +25,7 @@ function setYear(y) {
 $(document).ready(
 	function() {
 		var thisYear = new Date().getFullYear();
+		year = thisYear;
 		var y = document.getElementById("years");
 		op1 = document.createElement("OPTION");
 		op1.appendChild(document.createTextNode((thisYear-1)+''));
@@ -64,7 +65,7 @@ function retrieveData() {
 	setInfo('Probíhá...');
 	var datefrom = encodeURIComponent(year + '-01-01');
 	var dateto = encodeURIComponent(year + '-12-31');
-	var url = 'http://oris.orientacnisporty.cz/API/';
+	var url = 'https://oris.orientacnisporty.cz/API/';
 	var queryUrl = url+'?format=json&method=getEventList' +
 		'&sport=' + sportID +
 		'&rg=' + encodeURIComponent(region) +
@@ -129,7 +130,12 @@ function convertToCSV(objArray) {
 			line += ",";
 		}
 		if (array[i].Name != '') {
-			line += "," + array[i].Name;
+			if (array[i].Name.split(',').length > 1) {
+				line += "," + array[i].Name.replace(/,/g, ' &')
+			}
+			else {
+				line += "," + array[i].Name;
+			}
 		}
 		if (array[i].GPSLat != "0" && array[i].GPSLon != "0") {
 			line += "," + array[i].GPSLat + "N " + array[i].GPSLon + "E";
