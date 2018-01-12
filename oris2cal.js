@@ -108,9 +108,10 @@ function convertToCSV(objArray) {
 	//console.log(array);
 	var str = 'Subject, Start date, Start time, End time, Description, Location\r\n';
 	for (var i in array) {
+		if(!array.hasOwnProperty(i)) {continue;}
 		//console.log(array[i]);
 		var line = '';
-		if (array[i].Discipline.ShortName=="S") {continue;}
+		if (array[i].Discipline.ShortName=="S") {continue;} //skip non-competitions
 		if (array[i].Org1.Abbr) {
 			line += array[i].Org1.Abbr;
 		}
@@ -130,11 +131,19 @@ function convertToCSV(objArray) {
 			line += ",";
 		}
 		if (array[i].Name != '') {
-			if (array[i].Name.split(',').length > 1) {
+			if (array[i].Name.split(',').length > 1) { //If the name contains commas, transform them to ampersands
 				line += "," + array[i].Name.replace(/,/g, ' &')
 			}
 			else {
 				line += "," + array[i].Name;
+			}
+			let thisI =  Object.keys(array).findIndex(function(el){return el == i}), //beacuse of 2 events in the same day...
+				prevI;
+			if(thisI > 0) {
+				prevI = Object.keys(array)[thisI-1];
+				if(array[i].Date == array[prevI].Date && array[i].Name == array[prevI].Name && array[i].Org1.Abbr == array[prevI].Org1.Abbr) {
+					line += " (" + array[i].ID + ")";
+				}
 			}
 		}
 		if (array[i].GPSLat != "0" && array[i].GPSLon != "0") {
