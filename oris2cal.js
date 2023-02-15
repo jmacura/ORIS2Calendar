@@ -66,7 +66,7 @@ function retrieveData() {
 	var datefrom = encodeURIComponent(year + '-01-01');
 	var dateto = encodeURIComponent(year + '-12-31');
 	var url = 'https://oris.orientacnisporty.cz/API/';
-	var queryUrl = url+'?format=json&method=getEventList' +
+	var queryUrl = url + '?format=json&method=getEventList' +
 		'&sport=' + sportID +
 		'&rg=' + encodeURIComponent(region) +
 		'&datefrom=' + datefrom +
